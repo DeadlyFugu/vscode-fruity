@@ -14,4 +14,4 @@ This extension adds basic Fruity language support to VS Code.
 
 ### 1.0.0
 
-TODO: Not yet released...
+- Initial release.
