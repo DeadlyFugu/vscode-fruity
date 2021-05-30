@@ -1,0 +1,26 @@
+{
+    "name": "fruity-plugin-vscode",
+    "displayName": "Fruity Plugin VSCode",
+    "description": "Plugin for VSCode to support Fruity",
+    "version": "0.1.2",
+    "publisher": "deadlyfugu",
+    "engines": {
+        "vscode": "^1.44.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "fruity",
+            "aliases": ["Fruity", "fruity"],
+            "extensions": [".fj"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "fruity",
+            "scopeName": "source.fruity",
+            "path": "./syntaxes/fruity.tmLanguage.json"
+        }]
+    }
+}

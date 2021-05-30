@@ -1,0 +1,143 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Fruity",
+	"patterns": [
+		{ "include": "#fruity" }
+	],
+	"repository": {
+		"fruity": {
+			"patterns": [
+				{ "include": "#comment" },
+				{ "include": "#keyword" },
+				{ "include": "#constant" },
+				{ "include": "#string" },
+				{ "include": "#string2" },
+				{ "include": "#variable" },
+				{ "include": "#function" },
+				{ "include": "#argument" }
+			]
+		},
+        "comment": {
+            "name": "comment.line.fruity",
+            "match": "(?<=^|\\s|\\(|\\{)//.*$"
+        },
+		"keyword": {
+			"patterns": [
+				{
+					"name": "keyword.control.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)(then|else|until|do|map|fold|filter|zip)(?=$|\\s|\\)|\\})"
+				},
+				{
+					"name": "keyword.other.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)(as|is|repeat|with)(?=$|\\s|\\)|\\})"
+				},
+				{
+					"name": "keyword.other.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)[+\\-*/^%&|!=<>]{1,3}(?=$|\\s|\\)|\\})"
+				},
+				{
+					"name": "keyword.other.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)\\\\\\\\[a-zA-Z_][a-zA-Z0-9_]+(?=$|\\s|\\)|\\})"
+				},
+				{
+					"name": "keyword.other.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)\\.+(?=$|\\s|\\)|\\})"
+				}
+			]
+		},
+		"constant": {
+			"patterns": [
+				{
+					"name": "constant.language.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)(true|false|nil|default)(?=$|\\s|\\)|\\})"
+				},
+				{
+					"name": "constant.numeric.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)(0x[0-9a-fA-F]+|\\-?[0-9]+(\\.[0-9]+)?(e(\\+|-)?[0-9]+)?)(?=$|\\s|\\)|\\})"
+				},
+				{
+					"name": "constant.other.symbol.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)#[a-zA-Z_][a-zA-Z0-9_]*(?=$|\\s|\\)|\\})"
+				}
+			]
+		},
+		"string": {
+			"name": "string.quoted.single.fruity",
+			"begin": "(?<=^|\\s|\\(|\\{)'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.fruity",
+					"match": "\\\\([\\\\'\"bfnrt]|u[0-9a-fA-F]{4})"
+				}
+			]
+		},
+		"string2": {
+			"name": "string.quoted.double.fruity",
+			"begin": "(?<=^|\\s|\\(|\\{)\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.fruity",
+					"match": "\\\\([\\\\'\"bfnrt$]|u[0-9a-fA-F]{4})"
+				},
+				{
+					"name": "constant.character.interpolation.fruity",
+					"match": "\\$[a-zA-Z_][a-zA-Z0-9_]+"
+				},
+				{
+					"begin": "\\$\\(",
+					"captures": {
+						"0": { "name": "constant.character.interpolation.fruity"}
+					},
+					"end": "\\)",
+					"patterns": [
+						{ "include": "#fruity" },
+						{ "include": "#nested_paren" }
+					]
+				}
+			]
+		},
+		"variable": {
+			"patterns": [
+				{
+					"name": "variable.language.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)(this|self|root)(?=$|\\s|\\)|\\})"
+				},
+				{
+					"name": "variable.other.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)(\\$|>|>>|\\?|&)(\\.?[a-zA-Z_][a-zA-Z0-9_]*)+(?=$|\\s|\\)|\\})"
+				},
+				{
+					"name": "variable.other.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)(\\.?[a-zA-Z_][a-zA-Z0-9_]*)+:(?=$|\\s|\\)|\\})"
+				},
+				{
+					"name": "variable.parameter.fruity",
+					"match": "(?<=\\{)(\\s*[a-zA-Z_][a-zA-Z0-9_]*)+\\s*(?==>)"
+				}
+			]
+		},
+		"function": {
+			"patterns": [
+				{
+					"name": "support.function.fruity",
+					"match": "(?<=^|\\s|\\(|\\{)(\\.?[a-zA-Z_][a-zA-Z0-9_]*)+!?(?=$|\\s|\\)|\\}|\\()"
+				}
+			]
+		},
+		"argument": {
+			"name": "support.class.fruity",
+			"match": "(?<=^|\\s|\\(|\\{)@[a-zA-Z_][a-zA-Z0-9_]*(?=$|\\s|\\)|\\})"
+		},
+		"nested_paren": {
+			"begin": "\\(",
+			"end": "\\)",
+			"patterns": [
+				{ "include": "#fruity" },
+				{ "include": "#nested_paren" }
+			]
+		}
+	},
+	"scopeName": "source.fruity"
+}
