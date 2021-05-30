@@ -1,9 +1,13 @@
 {
     "name": "fruity-plugin-vscode",
-    "displayName": "Fruity Plugin VSCode",
-    "description": "Plugin for VSCode to support Fruity",
-    "version": "0.1.2",
+    "displayName": "Fruity",
+    "description": "Fruity language support",
+    "version": "1.0.0",
     "publisher": "deadlyfugu",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DeadlyFugu/vscode-fruity"
+    },
     "engines": {
         "vscode": "^1.44.0"
     },

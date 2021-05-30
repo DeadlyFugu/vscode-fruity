@@ -1,10 +1,14 @@
-# fruity-plugin-vscode README
+# Fruity Language Support
 
-This extension adds Fruity language support to VS Code.
+This extension adds basic Fruity language support to VS Code.
 
 ## Features
 
 - Syntax highlighting.
+
+## Screenshots
+
+![Syntax Highlighting](screenshots/syntax.png)
 
 ## Release Notes
 
